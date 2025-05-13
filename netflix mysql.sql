@@ -1,5 +1,13 @@
 Select * from netflix;
 
+1. Count the Number of Movies vs TV Shows
+SELECT 
+    type,
+    COUNT(*)
+FROM netflix
+GROUP BY 1;
+
+2. Find the Most Common Rating for Movies and TV Shows
 select  type, --max(rating) 
 rating,
 count(*)
@@ -25,12 +33,13 @@ from netflix group by 1,2
 
 where ranking  = 1
 
-select  string_to_array (country, ',') as new_country
-from netflix
+3. List All Movies Released in a Specific Year (e.g., 2020)
+select * from netflix  
+where type = 'Movie'
+and  release_year = 2020
 
-select  string_to_array (country, ',') as new_country
-from netflix
-
+4. Find the Top 5 Countries with the Most Content on Netflix
+	
 select 
  UNNEST (string_to_array (country, ',')) as new_country,
 count(show_id) as total_contant
@@ -39,11 +48,14 @@ group by 1
 order by 2 DESC
 limit 5
 
-select * from netflix  
-where type = 'Movie'
-and  release_year = 2020
+5. Identify the Longest Movie
+SELECT 
+    *
+FROM netflix
+WHERE type = 'Movie'
+ORDER BY SPLIT_PART(duration, ' ', 1)::INT DESC;
 
--- 6. Find Contant  added in the last 5 years
+6. Find Contant  added in the last 5 years
 
 select * 
 from netflix
