@@ -205,12 +205,12 @@ WHERE director IS NULL;
 
 **Objective:** List content that does not have a director.
 
-### 13. Find How Many Movies Actor '' Appeared in the Last 10 Years
+### 13. Find How Many Movies Actor 'Shah Rukh Khan' Appeared in the Last 10 Years
 
 ```sql
 SELECT * 
 FROM netflix
-WHERE casts LIKE '%%'
+WHERE casts LIKE '%Shah Rukh Khan%'
   AND release_year > EXTRACT(YEAR FROM CURRENT_DATE) - 10;
 ```
 
